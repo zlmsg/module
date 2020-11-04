@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: GateWay
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: likeapi
+          uri: lb:// seckill
+          predicates:
+          - Path=/seckill/**
+          filters:
+          - StripPrefix=1
